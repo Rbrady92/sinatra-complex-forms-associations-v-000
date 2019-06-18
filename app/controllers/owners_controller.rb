@@ -1,12 +1,12 @@
 class OwnersController < ApplicationController
 
   get '/owners' do
-    @pets = Pet.all
+    @owners = Owner.all
     erb :'/owners/index'
   end
 
   get '/owners/new' do
-
+    @pets = Pet.all
     erb :'/owners/new'
   end
 
@@ -21,11 +21,14 @@ class OwnersController < ApplicationController
   end
 
   get '/owners/:id/edit' do
-
+    @owner = Owner.find(params[:id])
+    @pets = Pet.all
+    erb :'/owners/edit'
   end
 
   get '/owners/:id' do
-
+    @owner = Owner.find(params[:id])
+    erb :'/owners/show'
   end
 
   patch '/owners/:id' do
